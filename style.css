@@ -2,7 +2,8 @@
 	width:70%;
 	margin:auto;
 	background-color: #e6e6e6;
-	height:90vh;
+	min-height:80vh;
+	margin-top:8vh;
 }
 
 h1{
@@ -14,10 +15,37 @@ h1{
 
 #box{
 	background-color:white;
-	height:60vh;
+	min-height:50vh;
 	width:90%;
 	margin:auto;
 	border-radius:20px;
-	margin-top:12vh;
+	margin-top:10vh;
 	box-shadow: 1px 1px 4px 1px #888888;
+}
+
+h2{
+	font-size:25px;
+	padding:6vh;
+}
+
+form{
+	padding:0px 9vh;
+	font-size:20px;
+}
+input{
+	margin:1.3vh;
+}
+button{
+	font-size:15px;
+	padding:10px 20px;
+	border:none;
+	border-radius: 10px;
+	margin:8vh 6vh;
+}
+#submit{
+	background-color: #ffff00;
+}
+#next{
+	background-color: #248f24;
+	color:white;
 }

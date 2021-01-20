@@ -1,6 +1,16 @@
-var scores = 0;
 
 const questions = [
+    {
+        question: "Inside which HTML element do we put the JavaScript?",
+        options: [
+            "<script>",
+            "<head>",
+            "<meta>",
+            "<style>"
+        ],
+        answer: "<script>",
+        score: 1
+    },
     {
         question: "Which of the following is true about typeof operator in JavaScript?",
         options: [
@@ -67,17 +77,7 @@ const questions = [
         answer: "Float",
         score: 1
     },
-    {
-        question: "Inside which HTML element do we put the JavaScript?",
-        options: [
-            "<script>",
-            "<head>",
-            "<meta>",
-            "<style>"
-        ],
-        answer: "<script>",
-        score: 1
-    },
+    
     {
         question: "What is the correct syntax for referring to an external script called \"script.js\"? ",
         options: [
@@ -111,4 +111,50 @@ const questions = [
         answer: "Splice",
         score: 1
     }
-]
+];
+
+var i=0,j=0, scores=0;
+
+var h = document.createElement("h2");
+var q = document.createTextNode(questions[i].question);
+h.appendChild(q);
+var div =document.getElementById("box");
+div.appendChild(h);
+
+var form = document.createElement("form");
+for(let j=0;j<4;j++)
+{
+    var input = document.createElement("input");
+    input.setAttribute("type", "radio");
+    input.setAttribute("name", "ans");
+    var op = document.createTextNode(questions[i].options[j]);
+    form.appendChild(input);
+    form.appendChild(op);
+    var br = document.createElement("br");
+    form.appendChild(br);
+}
+
+div.appendChild(form);
+
+var button1 = document.createElement("button");
+button1.setAttribute("id", "submit")
+var sub = document.createTextNode("Submit");
+button1.appendChild(sub);
+div.appendChild(button1);
+
+var button2 = document.createElement("button");
+button2.setAttribute("id", "next")
+var next = document.createTextNode("Next");
+button2.appendChild(next);
+div.appendChild(button2);
+
+
+// questions.map(
+//     (ques)=>{
+//         console.log(ques.question);
+//         var p = document.createElement("p");
+//         var n = document.createTextNode(ques.question);
+//         p.appendChild(n)
+//         document.body.appendChild(p);
+//     }
+// )
