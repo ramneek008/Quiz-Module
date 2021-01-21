@@ -5,6 +5,7 @@
 	min-height:80vh;
 	margin-top:8vh;
 	padding-bottom:2vh;
+	margin-bottom: 3vh;
 }
 
 h1{
@@ -12,6 +13,7 @@ h1{
 	font-size:40px;
 	background-color:#19334d;
 	color:white;
+	padding:1vh;
 }
 
 #box{
@@ -27,6 +29,13 @@ h1{
 h2{
 	font-size:25px;
 	padding:6vh;
+}
+
+h3{
+	position: absolute;
+	font-size:30px;
+	margin-top:-1vh;
+	margin-left:10vh;
 }
 
 form{
@@ -67,4 +76,27 @@ button{
 #next{
 	background-color: #248f24;
 	color:white;
+}
+
+ul{
+	margin:2vh;
+	padding:5vh;
+}
+li{
+	padding:1vh;
+	font-size:19px;
+}
+
+#ans{
+	background-color: #29a329;
+	color:white;
+	font-size:15px;
+	padding:2px 6px;
+	border-radius:7px;
+}
+
+#restart{
+	background-color: #007acc;
+	color:white;
+	margin:2vh 7vh 2vh 7vh;
 }

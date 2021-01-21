@@ -113,7 +113,7 @@ const questions = [
     }
 ];
 
-var i=0,j=0, scores=0;
+var i=9, scores=0;
 
 var h = document.createElement("h2");
 var q = document.createTextNode(questions[i].question);
@@ -187,25 +187,64 @@ function answerSubmit()
 button2.addEventListener("click", nextQuestion);
 
 function nextQuestion(){
-    h.innerText= questions[i].question;
-    form.innerHTML="";
-    for(let j=0;j<4;j++)
+    if(i<10)
     {
-        var input = document.createElement("input");
-        input.setAttribute("type", "radio");
-        input.setAttribute("name", "ans");
-        input.setAttribute("id",`op${j}`)
-        var op = document.createTextNode(questions[i].options[j]);
-        form.appendChild(input);
-        form.appendChild(op);
-        var br = document.createElement("br");
-        form.appendChild(br);
-    }
+       h.innerText= questions[i].question;
+        form.innerHTML="";
+        for(let j=0;j<4;j++)
+        {
+            var input = document.createElement("input");
+            input.setAttribute("type", "radio");
+            input.setAttribute("name", "ans");
+            input.setAttribute("id",`op${j}`)
+            var op = document.createTextNode(questions[i].options[j]);
+            form.appendChild(input);
+            form.appendChild(op);
+            var br = document.createElement("br");
+            form.appendChild(br);
+        }
 
-    result.innerHTML="";
-    result.setAttribute("id","");
-    div.removeChild(button2);
-    div.appendChild(button1);
+        result.innerHTML="";
+        result.setAttribute("id","");
+        div.removeChild(button2);
+        div.appendChild(button1); 
+    }
+    else
+    {
+        div.innerHTML="";
+        var h1 = document.getElementsByTagName("h1");
+        h1[0].innerText=`Score: ${scores}`;
+
+        var panel= document.getElementById("panel");
+
+        var h3 = document.createElement("h3");
+        var key = document.createTextNode("Answer Key");
+        h3.appendChild(key);
+        panel.insertBefore(h3, div);
+
+        var ul = document.createElement("ul");
+        for(let j=0;j<10;j++)
+        {
+            var li = document.createElement("li");
+            var quesli = document.createTextNode(questions[j].question + " - ");
+            li.appendChild(quesli);
+            var span = document.createElement("span");
+            var ansli = document.createTextNode(questions[j].answer);
+            span.setAttribute("id","ans")
+            span.appendChild(ansli);
+            li.appendChild(span);
+            ul.appendChild(li);
+            console.log(li);
+        }
+        div.appendChild(ul);
+
+        var restart = document.createElement("button");
+        restart.setAttribute("id", "restart");
+        var resbut = document.createTextNode("Restart");
+        restart.appendChild(resbut);
+        panel.appendChild(restart);
+    }
+    
 }
 
 // questions.map(
