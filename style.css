@@ -4,6 +4,7 @@
 	background-color: #e6e6e6;
 	min-height:80vh;
 	margin-top:8vh;
+	padding-bottom:2vh;
 }
 
 h1{
@@ -35,12 +36,30 @@ form{
 input{
 	margin:1.3vh;
 }
+
+p{
+	padding:1.5vh 3vh;
+	font-size:20px;
+	width:max-content;
+	border-radius:7px;
+	margin: 3vh 7vh;
+}
+
+#corr{
+	background-color: #b3d9ff;
+	color:#006600;
+}
+#incorr{
+	background-color: #ffcccc;
+	color:#990000;
+}
+
 button{
 	font-size:15px;
 	padding:10px 20px;
 	border:none;
 	border-radius: 10px;
-	margin:8vh 6vh;
+	margin:0vh 7vh 7vh 7vh;
 }
 #submit{
 	background-color: #ffff00;

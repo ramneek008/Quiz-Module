@@ -127,6 +127,7 @@ for(let j=0;j<4;j++)
     var input = document.createElement("input");
     input.setAttribute("type", "radio");
     input.setAttribute("name", "ans");
+    input.setAttribute("id",`op${j}`)
     var op = document.createTextNode(questions[i].options[j]);
     form.appendChild(input);
     form.appendChild(op);
@@ -135,6 +136,9 @@ for(let j=0;j<4;j++)
 }
 
 div.appendChild(form);
+
+var result = document.createElement("p");
+div.appendChild(result);
 
 var button1 = document.createElement("button");
 button1.setAttribute("id", "submit")
@@ -146,8 +150,63 @@ var button2 = document.createElement("button");
 button2.setAttribute("id", "next")
 var next = document.createTextNode("Next");
 button2.appendChild(next);
-div.appendChild(button2);
+// div.appendChild(button2);
 
+button1.addEventListener("click",answerSubmit);
+
+function answerSubmit()
+{
+    var ans;
+    for(let j=0;j<4;j++)
+    {
+        if(document.getElementById(`op${j}`).checked)
+        {
+            ans=questions[i].options[j];
+            console.log(j);
+            break;
+        }
+    }
+    if(ans===questions[i].answer)
+    {
+        result.setAttribute("id","corr");
+        let res = document.createTextNode("Correct");
+        result.appendChild(res);
+        scores++;
+    }
+    else
+    {
+        result.setAttribute("id","incorr");
+        let res = document.createTextNode("Incorrect");
+        result.appendChild(res);
+    }
+    div.removeChild(button1);
+    div.appendChild(button2);
+    i++;
+}
+
+button2.addEventListener("click", nextQuestion);
+
+function nextQuestion(){
+    h.innerText= questions[i].question;
+    form.innerHTML="";
+    for(let j=0;j<4;j++)
+    {
+        var input = document.createElement("input");
+        input.setAttribute("type", "radio");
+        input.setAttribute("name", "ans");
+        input.setAttribute("id",`op${j}`)
+        var op = document.createTextNode(questions[i].options[j]);
+        form.appendChild(input);
+        form.appendChild(op);
+        var br = document.createElement("br");
+        form.appendChild(br);
+    }
+
+    result.innerHTML="";
+    result.setAttribute("id","");
+    div.removeChild(button2);
+    div.appendChild(button1);
+}
 
 // questions.map(
 //     (ques)=>{
