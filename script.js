@@ -12,14 +12,14 @@ const questions = [
         score: 1
     },
     {
-        question: "Which of the following is true about typeof operator in JavaScript?",
+        question: "What is the full form of CSS?",
         options: [
-            "The typeof is a unary operator that is placed before its single operand, which can be of any type", 
-            "Its value is a string indicating the data type of the operand.", 
-            "Both of the above", 
+            "JavaScript", 
+            "Java", 
+            "HTML", 
             "None of the above"
             ],
-        answer: "Both of the above",
+        answer: "None of the above",
         score: 1
     },
     {
@@ -92,10 +92,10 @@ const questions = [
     {
         question: "Which symbol is used for comments in Javascript? ",
         options: [
-            "\\",
+            "\\\\",
             "//",
             "\\* *\\",
-            "\* */"
+            "\\* */"
         ],
         answer: "//",
         score: 1
@@ -103,17 +103,17 @@ const questions = [
     {
         question: "Which method of an Array object adds and/or removes elements from an array?",
         options: [
-            "Reverse",
-            "Shift",
-            "Slice",
-            "Splice"
+            "reverse()",
+            "shift()",
+            "slice()",
+            "splice()"
         ],
-        answer: "Splice",
+        answer: "splice()",
         score: 1
     }
 ];
 
-var i=9, scores=0;
+var i=0, scores=0;
 
 var h = document.createElement("h2");
 var q = document.createTextNode(questions[i].question);
@@ -166,22 +166,39 @@ function answerSubmit()
             break;
         }
     }
-    if(ans===questions[i].answer)
+    if(ans===undefined)
     {
-        result.setAttribute("id","corr");
-        let res = document.createTextNode("Correct");
+        result.innerHTML="";
+        result.setAttribute("id","incorr");
+        let res = document.createTextNode("Select the option");
         result.appendChild(res);
-        scores++;
     }
     else
     {
-        result.setAttribute("id","incorr");
-        let res = document.createTextNode("Incorrect");
-        result.appendChild(res);
+        if(ans===questions[i].answer)
+        {
+            result.innerHTML="";
+            result.setAttribute("id","corr");
+            let res = document.createTextNode("Correct");
+            result.appendChild(res);
+            scores++;
+        }
+        else
+        {
+            result.innerHTML="";
+            result.setAttribute("id","incorr");
+            let res = document.createTextNode("Incorrect");
+            result.appendChild(res);
+        }
+        div.removeChild(button1);
+        div.appendChild(button2);
+        for(let j=0;j<4;j++)
+        {
+            document.getElementById(`op${j}`).disabled = true;
+        }
+        i++;
     }
-    div.removeChild(button1);
-    div.appendChild(button2);
-    i++;
+    
 }
 
 button2.addEventListener("click", nextQuestion);
@@ -243,16 +260,12 @@ function nextQuestion(){
         var resbut = document.createTextNode("Restart");
         restart.appendChild(resbut);
         panel.appendChild(restart);
+        restart.addEventListener("click",restartQuiz);
     }
     
 }
 
-// questions.map(
-//     (ques)=>{
-//         console.log(ques.question);
-//         var p = document.createElement("p");
-//         var n = document.createTextNode(ques.question);
-//         p.appendChild(n)
-//         document.body.appendChild(p);
-//     }
-// )
+function restartQuiz()
+{
+    location.reload()
+}
