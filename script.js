@@ -267,5 +267,24 @@ function nextQuestion(){
 
 function restartQuiz()
 {
-    location.reload()
+    //location.reload()
+    i=0;
+    scores=0;
+    div.innerHTML="";
+    var h1 = document.getElementsByTagName("h1");
+    h1[0].innerText="Quiz"
+
+    var panel = document.getElementById("panel");
+    var h3 = document.getElementsByTagName("h3");
+    panel.removeChild(h3[0]);
+
+    var restart = document.getElementById("restart");
+    panel.removeChild(restart);
+
+    h.innerText = questions[i].question;
+    div.appendChild(h);
+    div.appendChild(form);
+    div.appendChild(result);
+    div.appendChild(button1);
+    nextQuestion();
 }
